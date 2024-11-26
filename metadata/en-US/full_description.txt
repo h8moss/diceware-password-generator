@@ -1,0 +1,3 @@
+The diceware technique allows you to create impossible-to-guess passwords using nothing but a wordlist and a set of dice.
+This application enables you to do the same in case you don't happen to have a set of dice in hand
+

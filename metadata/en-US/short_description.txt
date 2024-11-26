@@ -1,0 +1,1 @@
+Generate hard-to-guess but easy-to-remember passwords using the Diceware technique
