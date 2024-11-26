@@ -70,7 +70,7 @@ fun WordsComponent(words: Array<Int>, modifier: Modifier = Modifier) {
     FlowRow(
         modifier = modifier
             .wrapContentWidth()
-            .heightIn(min = 40.dp),
+            .heightIn(min = 300.dp),
         horizontalArrangement = Arrangement.Center
     ) {
         words.forEach { i ->
