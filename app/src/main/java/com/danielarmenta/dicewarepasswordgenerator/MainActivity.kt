@@ -101,7 +101,7 @@ fun App(modifier: Modifier = Modifier) {
     }
     val entropy = entropyOf(wordIndexes.size)
 
-    val clipboard = LocalClipboardManager.current;
+    val clipboard = LocalClipboardManager.current
 
     Scaffold(modifier = modifier.fillMaxSize()) { innerPadding ->
         Column(
