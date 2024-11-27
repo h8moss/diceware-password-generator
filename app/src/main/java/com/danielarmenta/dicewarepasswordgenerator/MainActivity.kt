@@ -28,6 +28,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -98,6 +101,8 @@ fun App(modifier: Modifier = Modifier) {
     }
     val entropy = entropyOf(wordIndexes.size)
 
+    val clipboard = LocalClipboardManager.current;
+
     Scaffold(modifier = modifier.fillMaxSize()) { innerPadding ->
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -140,6 +145,20 @@ fun App(modifier: Modifier = Modifier) {
 
                 Text(text = "Reset words")
             }
+            Button(onClick = {
+                clipboard.setText(
+                    AnnotatedString(
+                        wordIndexes.joinToString(" ") { w -> WordManager.words[w] }
+                    )
+                )
+            }) {
+                Icon(
+                    painterResource(R.drawable.content_copy),
+                    contentDescription = null
+                )
+
+                Text(text = "Copy")
+            }
         }
     }
 }
@@ -148,11 +167,6 @@ fun App(modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     DicewarePasswordGeneratorTheme {
-        Scaffold { padding ->
-            WordsComponent(words = arrayOf(
-                0,1,2,3,4,5,6
-            ),
-                modifier = Modifier.padding(padding))
-        }
+        App()
     }
 }
